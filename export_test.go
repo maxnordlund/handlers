@@ -56,7 +56,7 @@ func SampleTarFileSystem() ([]string, fileSystem) {
 	if err != nil {
 		log.Fatalln(err)
 	}
-	return sampleTarFiles, fs
+	return sampleTarFiles, fs.(fileSystem)
 }
 
 type fileInfo struct {

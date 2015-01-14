@@ -65,7 +65,7 @@ type tarFile struct {
 type fileSystem map[string]*tarFile
 
 // NewTarFileSystem returns a http.FileSystem backed by the provided tar file.
-func NewTarFileSystem(tr *tar.Reader) (fileSystem, error) {
+func NewTarFileSystem(tr *tar.Reader) (http.FileSystem, error) {
 	fs := make(fileSystem)
 	dirs := make(map[string][]os.FileInfo)
 	for {
