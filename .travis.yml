@@ -1,0 +1,17 @@
+sudo: false
+language: go
+env:
+  global:
+    secure: Skc2s7zqVY7dgFzAVNgWc49eBIpGc86feJv8C9el1FWw4Pbd3DKtwjDDN4O9mT99buSTxFa+Dht4+Q1KLpXLd8r0fYRBw9tkVJ//WvLyguncUP67ZbpZIHZUpDZacErZs8SUo/Af8LrjDefndwA9y4HWmpK1/GAt57JfFJKRpH8=
+go:
+- 1.2
+- 1.3
+- 1.4
+- tip
+before_install:
+- go get code.google.com/p/go.tools/cmd/cover || go get golang.org/x/tools/cmd/cover
+- go get github.com/mattn/goveralls
+script:
+- go test -v -covermode=count -coverprofile=coverage.out .
+- goveralls -coverprofile=coverage.out -service=travis-ci -repotoken $COVERALLS_TOKEN
+
